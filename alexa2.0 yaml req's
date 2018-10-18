@@ -1,0 +1,67 @@
+media_player:
+  - platform: alexa
+    email: !secret alexa_email
+    password: !secret alexa_password
+    url: amazon.com
+    scan_interval: 30
+    
+
+input_select:
+  genre:
+    name: Genre
+    options:
+     - Choose...
+     - Top Pop (Clean)
+     - Classic Rock
+     - Top Rock
+     - Best of Prime Music
+     - Cool Jazz
+     - Oldies
+    initial: Choose...
+  which_device:
+    name: Which Device?
+    options:
+     - Choose...
+     - Kitchen
+     - Living Room
+     - Bedroom
+     - All
+    initial: Choose...
+      
+input_boolean:
+  stop_music:
+    name: Stop Music
+    initial: off
+  next_song:
+    name: Next Song
+    initial: off
+  previous_song:
+    name: Previous Song
+    initial: off
+    
+input_text:
+  announce:
+    name: Announce
+    initial: ""      
+  artist_song:
+    name: Artist or Song
+    initial: ""
+  artist_radio:
+    name: Artist Radio
+    initial: ""
+  artist_playing:
+    name: Artist
+    initial: ""
+  song_playing:
+    name: Song
+    initial: ""
+  
+input_number:
+  echo_volume:
+    name: Volume
+    initial: 10
+    min: 5
+    max: 10
+    step: 0.5
+    mode: slider
+
