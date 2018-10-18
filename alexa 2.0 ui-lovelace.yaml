@@ -11,12 +11,12 @@ views:
         entities:
           - entity: input_select.which_device
             name: Which Device?  
+          - entity: input_number.echo_volume
+            name: Volume            
+          - entity: input_text.announce
+            name: Announce            
           - entity: input_select.genre
             name: Genre
-          - entity: input_number.echo_volume
-            name: Volume
-          - entity: input_text.announce
-            name: Announce
           - entity: input_text.artist_song
             name: Artist or Song
           - entity: input_text.artist_radio
@@ -38,4 +38,4 @@ views:
             icon: mdi:play     
           - entity: input_text.song_playing
             name: Song Playing
-            icon: mdi:play
+            icon: mdi:play        
