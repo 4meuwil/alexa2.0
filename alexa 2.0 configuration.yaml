@@ -65,3 +65,29 @@ input_number:
     step: 0.5
     mode: slider
 
+sensor:
+   kitchen_artist:
+    friendly_name: 'kitchen artist'
+    value_template: '{{ states.media_player.kitchen_echo.attributes.media_artist }}'      
+   kitchen_title:
+    friendly_name: 'kitchen title'
+    value_template: '{{ states.media_player.kitchen_echo.attributes.media_title }}'   
+   living_artist:
+    friendly_name: 'living artist'
+    value_template: '{{ states.media_player.living_room.attributes.media_artist }}'      
+   living_title: 
+    friendly_name: 'living title'
+    value_template: '{{ states.media_player.living_room.attributes.media_title }}'
+   bedroom_artist:
+    friendly_name: 'bedroom artist'
+    value_template: '{{ states.media_player.bedroom_echo.attributes.media_artist }}'      
+   bedroom_title: 
+    friendly_name: 'bedroom title'
+    value_template: '{{ states.media_player.bedroom_echo.attributes.media_title }}'
+   downstairs_artist:
+    friendly_name: 'downstairs artist'
+    value_template: '{{ states.media_player.downstairs.attributes.media_artist }}'      
+   downstairs_title: 
+    friendly_name: 'downstairs title'
+    value_template: '{{ states.media_player.downstairs.attributes.media_title }}'
+    
