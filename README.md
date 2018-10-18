@@ -1,6 +1,6 @@
 # Alexa 2.0
 
-This is my "alexa 2.0" that works well for me. I have amazon prime music and use it almost solely. "media_content_id" could be adjusted for other services such as spotify, pandora, tunein etc.
+This is what I call "alexa 2.0" and it works well for me. I have amazon prime music and use it almost solely. "media_content_id" could be adjusted for other services such as spotify, pandora, tunein etc.
 
 This project requires ***Node Red*** and the ***"Alexa as a media player"*** script by Keaton Taylor successfully running....
 Keaton's Github..... https://github.com/keatontaylor
