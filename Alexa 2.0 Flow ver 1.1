@@ -1,0 +1,1869 @@
+[
+    {
+        "id": "f517e4e9.929c18",
+        "type": "tab",
+        "label": "Alexa 2.0",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "db450502.a2fdc8",
+        "type": "server-state-changed",
+        "z": "f517e4e9.929c18",
+        "name": "Genre selected",
+        "server": "43c6abca.ce6fb4",
+        "entityidfilter": "input_select.genre",
+        "entityidfiltertype": "exact",
+        "haltifstate": "Choose...",
+        "x": 110,
+        "y": 705,
+        "wires": [
+            [
+                "98ee3b57.f72b18",
+                "576466ea.ff7968"
+            ]
+        ]
+    },
+    {
+        "id": "98ee3b57.f72b18",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Reset",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "input_select",
+        "service": "select_option",
+        "data": "{   \"entity_id\": \"input_select.genre\",\"option\":\"Choose...\" }",
+        "mergecontext": "",
+        "x": 275,
+        "y": 705,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "df55a649.caf238",
+        "type": "server-state-changed",
+        "z": "f517e4e9.929c18",
+        "name": "Which Device",
+        "server": "43c6abca.ce6fb4",
+        "entityidfilter": "input_select.which_device",
+        "entityidfiltertype": "exact",
+        "haltifstate": "",
+        "x": 100,
+        "y": 30,
+        "wires": [
+            [
+                "39cbf9fb.306ab6"
+            ]
+        ]
+    },
+    {
+        "id": "39cbf9fb.306ab6",
+        "type": "change",
+        "z": "f517e4e9.929c18",
+        "name": "Save device",
+        "rules": [
+            {
+                "t": "set",
+                "p": "device",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 295,
+        "y": 30,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f6a26ab8.05d228",
+        "type": "server-state-changed",
+        "z": "f517e4e9.929c18",
+        "name": "Announce",
+        "server": "43c6abca.ce6fb4",
+        "entityidfilter": "input_text.announce",
+        "entityidfiltertype": "exact",
+        "haltifstate": "",
+        "x": 90,
+        "y": 105,
+        "wires": [
+            [
+                "8ec9d45d.dcd798",
+                "684c7f39.ab6be"
+            ]
+        ]
+    },
+    {
+        "id": "8ec9d45d.dcd798",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Clear text",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "input_text",
+        "service": "set_value",
+        "data": "{\"entity_id\": \"input_text.announce\", \"value\":\"\"}",
+        "mergecontext": "",
+        "x": 285,
+        "y": 90,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f28ab8be.8a5218",
+        "type": "server-state-changed",
+        "z": "f517e4e9.929c18",
+        "name": "Artist Radio",
+        "server": "43c6abca.ce6fb4",
+        "entityidfilter": "input_text.artist_radio",
+        "entityidfiltertype": "exact",
+        "haltifstate": "",
+        "x": 100,
+        "y": 465,
+        "wires": [
+            [
+                "4771b652.1680c8",
+                "b6d625.b96b39d8"
+            ]
+        ]
+    },
+    {
+        "id": "4fb195cc.6c8d3c",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "Living Room",
+        "func": "if (msg.payload === \"\") return null;\n\nmsg.payload =\n{\n    \"data\": {\n        \"entity_id\": \"media_player.living_room\",\n        \"message\":msg.payload,\n        }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 520,
+        "y": 150,
+        "wires": [
+            [
+                "3345bc3.e6b5f44"
+            ]
+        ]
+    },
+    {
+        "id": "15b2de4a.b04c32",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "Kitchen",
+        "func": "if (msg.payload === \"\") return null;\n\nmsg.payload =\n{\n    \"data\": {\n        \"entity_id\": \"media_player.kitchen_echo\",\n        \"message\":msg.payload,\n        }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 120,
+        "wires": [
+            [
+                "3345bc3.e6b5f44"
+            ]
+        ]
+    },
+    {
+        "id": "6f3e79.5f4f7188",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "Bedroom",
+        "func": "if (msg.payload === \"\") return null;\n\nmsg.payload =\n{\n    \"data\": {\n        \"entity_id\": \"media_player.bedroom_echo\",\n        \"message\":msg.payload,\n        }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 180,
+        "wires": [
+            [
+                "3345bc3.e6b5f44"
+            ]
+        ]
+    },
+    {
+        "id": "3345bc3.e6b5f44",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Announce",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "alexa_tts",
+        "data": "{}",
+        "mergecontext": "",
+        "x": 705,
+        "y": 150,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "684c7f39.ab6be",
+        "type": "switch",
+        "z": "f517e4e9.929c18",
+        "name": "Device?",
+        "property": "device",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Kitchen",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Living Room",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Bedroom",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "All",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 285,
+        "y": 150,
+        "wires": [
+            [
+                "15b2de4a.b04c32"
+            ],
+            [
+                "4fb195cc.6c8d3c"
+            ],
+            [
+                "6f3e79.5f4f7188"
+            ],
+            [
+                "15b2de4a.b04c32",
+                "4fb195cc.6c8d3c",
+                "6f3e79.5f4f7188"
+            ]
+        ]
+    },
+    {
+        "id": "473256ba.075998",
+        "type": "server-state-changed",
+        "z": "f517e4e9.929c18",
+        "name": "Artist/Song",
+        "server": "43c6abca.ce6fb4",
+        "entityidfilter": "input_text.artist_song",
+        "entityidfiltertype": "exact",
+        "haltifstate": "",
+        "x": 90,
+        "y": 225,
+        "wires": [
+            [
+                "5a4464f7.032d4c",
+                "367d1a9b.875dc6"
+            ]
+        ]
+    },
+    {
+        "id": "5a4464f7.032d4c",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Clear text",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "input_text",
+        "service": "set_value",
+        "data": "{   \"entity_id\": \"input_text.artist_song\",\"value\":\"\" }",
+        "mergecontext": "",
+        "x": 285,
+        "y": 225,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4671f05c.80aa7",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "Kitchen",
+        "func": "if (msg.payload === \"\") return null;\n\nmsg.payload =\n{\n    \"data\": {\n        \"entity_id\": \"media_player.kitchen_echo\",\n        \"media_content_id\":msg.payload,\n        \"media_content_type\": \"AMAZON_MUSIC\"\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 330,
+        "wires": [
+            [
+                "85aa41b0.7ccf2"
+            ]
+        ]
+    },
+    {
+        "id": "e14d8826.11fec8",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "Living Room",
+        "func": "if (msg.payload === \"\") return null;\n\nmsg.payload =\n{\n    \"data\": {\n        \"entity_id\": \"media_player.living_room\",\n        \"media_content_id\":msg.payload,\n        \"media_content_type\": \"AMAZON_MUSIC\"\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 520,
+        "y": 360,
+        "wires": [
+            [
+                "85aa41b0.7ccf2"
+            ]
+        ]
+    },
+    {
+        "id": "ee7187d5.39dd78",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "Bedroom",
+        "func": "if (msg.payload === \"\") return null;\n\nmsg.payload =\n{\n    \"data\": {\n        \"entity_id\": \"media_player.bedroom_echo\",\n        \"media_content_id\":msg.payload,\n        \"media_content_type\": \"AMAZON_MUSIC\"\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 390,
+        "wires": [
+            [
+                "85aa41b0.7ccf2"
+            ]
+        ]
+    },
+    {
+        "id": "9d1b0d1e.07328",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Play",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "play_media",
+        "data": "{}",
+        "mergecontext": "",
+        "x": 830,
+        "y": 375,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4771b652.1680c8",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Clear text",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "input_text",
+        "service": "set_value",
+        "data": "{   \"entity_id\": \"input_text.artist_radio\",\"value\":\"\" }",
+        "mergecontext": "",
+        "x": 285,
+        "y": 465,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "37dc7eaa.256212",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "Kitchen",
+        "func": "if (msg.payload === \"\") return null;\n\nmsg.payload =\n{\n    \"data\": {\n        \"entity_id\": \"media_player.kitchen_echo\",\n        \"media_content_id\":msg.payload + \" radio\",\n        \"media_content_type\": \"AMAZON_MUSIC\"\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 570,
+        "wires": [
+            [
+                "9293969.70ce668"
+            ]
+        ]
+    },
+    {
+        "id": "72a4eb01.1822b4",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "Living Room",
+        "func": "if (msg.payload === \"\") return null;\n\nmsg.payload =\n{\n    \"data\": {\n        \"entity_id\": \"media_player.living_room\",\n        \"media_content_id\":msg.payload + \" radio\",\n        \"media_content_type\": \"AMAZON_MUSIC\"\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 520,
+        "y": 600,
+        "wires": [
+            [
+                "9293969.70ce668"
+            ]
+        ]
+    },
+    {
+        "id": "90838f47.c3019",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "Bedroom",
+        "func": "if (msg.payload === \"\") return null;\n\nmsg.payload =\n{\n    \"data\": {\n        \"entity_id\": \"media_player.bedroom_echo\",\n        \"media_content_id\":msg.payload + \" radio\",\n        \"media_content_type\": \"AMAZON_MUSIC\"\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 630,
+        "wires": [
+            [
+                "9293969.70ce668"
+            ]
+        ]
+    },
+    {
+        "id": "795a8ac8.f0f284",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Play",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "play_media",
+        "data": "{}",
+        "mergecontext": "",
+        "x": 830,
+        "y": 615,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7f8fdbb.4ea6924",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "Kitchen",
+        "func": "if (msg.payload === \"\") return null;\n\nmsg.payload =\n{\n    \"data\": {\n        \"entity_id\": \"media_player.kitchen_echo\",\n        \"media_content_id\":msg.payload + \" station\",\n        \"media_content_type\": \"AMAZON_MUSIC\"\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 810,
+        "wires": [
+            [
+                "1cfbb374.dab59d"
+            ]
+        ]
+    },
+    {
+        "id": "46f8f470.5e180c",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "Living Room",
+        "func": "if (msg.payload === \"\") return null;\n\nmsg.payload =\n{\n    \"data\": {\n        \"entity_id\": \"media_player.living_room\",\n        \"media_content_id\":msg.payload + \" station\",\n        \"media_content_type\": \"AMAZON_MUSIC\"\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 520,
+        "y": 840,
+        "wires": [
+            [
+                "1cfbb374.dab59d"
+            ]
+        ]
+    },
+    {
+        "id": "18ef788.f404888",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "Bedroom",
+        "func": "if (msg.payload === \"\") return null;\n\nmsg.payload =\n{\n    \"data\": {\n        \"entity_id\": \"media_player.bedroom_echo\",\n        \"media_content_id\":msg.payload + \" station\",\n        \"media_content_type\": \"AMAZON_MUSIC\"\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 870,
+        "wires": [
+            [
+                "1cfbb374.dab59d"
+            ]
+        ]
+    },
+    {
+        "id": "493baae9.aefc24",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Play",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "play_media",
+        "data": "{}",
+        "mergecontext": "",
+        "x": 830,
+        "y": 855,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e6892aad.249a48",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Kitchen Stop",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "media_pause",
+        "data": "{ \"entity_id\": \"media_player.kitchen_echo\" }",
+        "mergecontext": "",
+        "x": 520,
+        "y": 225,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4a8a0d9e.fd0194",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Living Room Stop",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "media_pause",
+        "data": "{ \"entity_id\": \"media_player.living_room\" }",
+        "mergecontext": "",
+        "x": 540,
+        "y": 255,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f8636af1.17c7b8",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Bedroom Stop",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "media_pause",
+        "data": "{ \"entity_id\": \"media_player.bedroom_echo\" }",
+        "mergecontext": "",
+        "x": 530,
+        "y": 285,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "85aa41b0.7ccf2",
+        "type": "delay",
+        "z": "f517e4e9.929c18",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": ".5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 690,
+        "y": 375,
+        "wires": [
+            [
+                "9d1b0d1e.07328"
+            ]
+        ]
+    },
+    {
+        "id": "1d4e8edc.418f31",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Living Room Stop",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "media_pause",
+        "data": "{ \"entity_id\": \"media_player.living_room\" }",
+        "mergecontext": "",
+        "x": 540,
+        "y": 495,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7b09bba2.794e04",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Bedroom Stop",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "media_pause",
+        "data": "{ \"entity_id\": \"media_player.bedroom_echo\" }",
+        "mergecontext": "",
+        "x": 530,
+        "y": 525,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d45fd70c.875d28",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Kitchen Stop",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "media_pause",
+        "data": "{ \"entity_id\": \"media_player.kitchen_echo\" }",
+        "mergecontext": "",
+        "x": 520,
+        "y": 465,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9293969.70ce668",
+        "type": "delay",
+        "z": "f517e4e9.929c18",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": ".5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 690,
+        "y": 615,
+        "wires": [
+            [
+                "795a8ac8.f0f284"
+            ]
+        ]
+    },
+    {
+        "id": "563995ce.02acec",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Living Room Stop",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "media_pause",
+        "data": "{ \"entity_id\": \"media_player.living_room\" }",
+        "mergecontext": "",
+        "x": 540,
+        "y": 735,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2a9d6b3e.f9ded4",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Bedroom Stop",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "media_pause",
+        "data": "{ \"entity_id\": \"media_player.bedroom_echo\" }",
+        "mergecontext": "",
+        "x": 530,
+        "y": 765,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "feb11939.56be48",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Kitchen Stop",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "media_pause",
+        "data": "{ \"entity_id\": \"media_player.kitchen_echo\" }",
+        "mergecontext": "",
+        "x": 520,
+        "y": 705,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1cfbb374.dab59d",
+        "type": "delay",
+        "z": "f517e4e9.929c18",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": ".5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 690,
+        "y": 855,
+        "wires": [
+            [
+                "493baae9.aefc24"
+            ]
+        ]
+    },
+    {
+        "id": "48b0c113.7d0df",
+        "type": "server-state-changed",
+        "z": "f517e4e9.929c18",
+        "name": "Stop Music",
+        "server": "43c6abca.ce6fb4",
+        "entityidfilter": "input_boolean.stop_music",
+        "entityidfiltertype": "substring",
+        "haltifstate": "off",
+        "x": 90,
+        "y": 945,
+        "wires": [
+            [
+                "b10d436b.8a9b6",
+                "44b2d3ed.d4d97c"
+            ]
+        ]
+    },
+    {
+        "id": "143f253b.79a9db",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Living Room Stop",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "media_pause",
+        "data": "{ \"entity_id\": \"media_player.living_room\" }",
+        "mergecontext": "",
+        "x": 540,
+        "y": 990,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1e09e4a6.528e4b",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Bedroom Stop",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "media_pause",
+        "data": "{ \"entity_id\": \"media_player.bedroom_echo\" }",
+        "mergecontext": "",
+        "x": 530,
+        "y": 1020,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "841d2f2a.703df",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Kitchen Stop",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "media_pause",
+        "data": "{ \"entity_id\": \"media_player.kitchen_echo\" }",
+        "mergecontext": "",
+        "x": 520,
+        "y": 960,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b10d436b.8a9b6",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Stop Button Reset",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "homeassistant",
+        "service": "turn_off",
+        "data": "{   \"entity_id\": \"input_boolean.stop_music\"  }",
+        "mergecontext": "",
+        "x": 315,
+        "y": 945,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f216eb84.c14498",
+        "type": "server-state-changed",
+        "z": "f517e4e9.929c18",
+        "name": "Next Song",
+        "server": "43c6abca.ce6fb4",
+        "entityidfilter": "input_boolean.next_song",
+        "entityidfiltertype": "substring",
+        "haltifstate": "off",
+        "x": 90,
+        "y": 1095,
+        "wires": [
+            [
+                "c23c0d5e.c991d",
+                "b5510194.932ff"
+            ]
+        ]
+    },
+    {
+        "id": "dd7c88.3f280378",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Living Room Next",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "media_next_track",
+        "data": "{ \"entity_id\": \"media_player.living_room\" }",
+        "mergecontext": "",
+        "x": 540,
+        "y": 1140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "526bc582.bb81ac",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Bedroom Next",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "media_next_track",
+        "data": "{ \"entity_id\": \"media_player.bedroom_echo\" }",
+        "mergecontext": "",
+        "x": 530,
+        "y": 1170,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "425653d8.b3dedc",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Kitchen Next",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "media_next_track",
+        "data": "{ \"entity_id\": \"media_player.kitchen_echo\" }",
+        "mergecontext": "",
+        "x": 520,
+        "y": 1110,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c23c0d5e.c991d",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Next Button Reset",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "homeassistant",
+        "service": "turn_off",
+        "data": "{   \"entity_id\": \"input_boolean.next_song\"  }",
+        "mergecontext": "",
+        "x": 315,
+        "y": 1095,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9eccd9cf.f90878",
+        "type": "server-state-changed",
+        "z": "f517e4e9.929c18",
+        "name": "Previous Song",
+        "server": "43c6abca.ce6fb4",
+        "entityidfilter": "input_boolean.previous_song",
+        "entityidfiltertype": "substring",
+        "haltifstate": "off",
+        "x": 110,
+        "y": 1245,
+        "wires": [
+            [
+                "766636e4.aca8f8",
+                "a693f06e.d7bb9"
+            ]
+        ]
+    },
+    {
+        "id": "c309f1c1.d070a",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Living Room Previous",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "media_previous_track",
+        "data": "{ \"entity_id\": \"media_player.living_room\" }",
+        "mergecontext": "",
+        "x": 550,
+        "y": 1290,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6315518f.1ead9",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Bedroom Previous",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "media_previous_track",
+        "data": "{ \"entity_id\": \"media_player.bedroom_echo\" }",
+        "mergecontext": "",
+        "x": 540,
+        "y": 1320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4d09df3c.4fee9",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Kitchen Previous",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "media_previous_track",
+        "data": "{ \"entity_id\": \"media_player.kitchen_echo\" }",
+        "mergecontext": "",
+        "x": 540,
+        "y": 1260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "766636e4.aca8f8",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Prev Button Reset",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "homeassistant",
+        "service": "turn_off",
+        "data": "{   \"entity_id\": \"input_boolean.previous_song\"  }",
+        "mergecontext": "",
+        "x": 315,
+        "y": 1245,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fca973a2.b7456",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "Group",
+        "func": "if (msg.payload === \"\") return null;\n\nmsg.payload =\n{\n    \"data\": {\n        \"entity_id\": \"media_player.kitchen_echo\",\n        \"media_content_id\":msg.payload + \" station on group downstairs\",\n        \"media_content_type\": \"AMAZON_MUSIC\"\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 500,
+        "y": 900,
+        "wires": [
+            [
+                "1cfbb374.dab59d"
+            ]
+        ]
+    },
+    {
+        "id": "ab051d16.81278",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "Group",
+        "func": "if (msg.payload === \"\") return null;\n\nmsg.payload =\n{\n    \"data\": {\n        \"entity_id\": \"media_player.bedroom_echo\",\n        \"media_content_id\":msg.payload + \" on group downstairs\",\n        \"media_content_type\": \"AMAZON_MUSIC\"\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 500,
+        "y": 420,
+        "wires": [
+            [
+                "85aa41b0.7ccf2"
+            ]
+        ]
+    },
+    {
+        "id": "f4e3dc8d.3340e",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "Group",
+        "func": "if (msg.payload === \"\") return null;\n\nmsg.payload =\n{\n    \"data\": {\n        \"entity_id\": \"media_player.bedroom_echo\",\n        \"media_content_id\":msg.payload + \" radio on group downstairs\",\n        \"media_content_type\": \"AMAZON_MUSIC\"\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 500,
+        "y": 660,
+        "wires": [
+            [
+                "9293969.70ce668"
+            ]
+        ]
+    },
+    {
+        "id": "7806cf5e.adcca",
+        "type": "server-state-changed",
+        "z": "f517e4e9.929c18",
+        "name": "Volume",
+        "server": "43c6abca.ce6fb4",
+        "entityidfilter": "input_number.echo_volume",
+        "entityidfiltertype": "exact",
+        "haltifstate": "",
+        "x": 80,
+        "y": 1410,
+        "wires": [
+            [
+                "6df7bab6.402b04",
+                "18684a15.44e206"
+            ]
+        ]
+    },
+    {
+        "id": "a9b829c8.3a0238",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Set Volume",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "volume_set",
+        "data": "{}",
+        "mergecontext": "",
+        "x": 715,
+        "y": 1485,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a9987f32.490ea",
+        "type": "change",
+        "z": "f517e4e9.929c18",
+        "name": "Save volume",
+        "rules": [
+            {
+                "t": "set",
+                "p": "volume",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 1410,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "836d3b05.b4c5e8",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "Kitchen",
+        "func": "msg.payload = \n{ \n    \"data\": {   \n        \"entity_id\": \"media_player.kitchen_echo\", \"volume_level\":flow.get(\"volume\")\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 1455,
+        "wires": [
+            [
+                "a9b829c8.3a0238"
+            ]
+        ]
+    },
+    {
+        "id": "a31cac85.27f6f",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "Living Room",
+        "func": "msg.payload = \n{ \n    \"data\": {   \n        \"entity_id\": \"media_player.living_room\", \"volume_level\":flow.get(\"volume\")\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 521.0173645019531,
+        "y": 1485.34375,
+        "wires": [
+            [
+                "a9b829c8.3a0238"
+            ]
+        ]
+    },
+    {
+        "id": "6e83badf.b6f9b4",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "Bedroom",
+        "func": "msg.payload = \n{ \n    \"data\": {   \n        \"entity_id\": \"media_player.bedroom_echo\", \"volume_level\":flow.get(\"volume\")\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 1515,
+        "wires": [
+            [
+                "a9b829c8.3a0238"
+            ]
+        ]
+    },
+    {
+        "id": "6df7bab6.402b04",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "/10",
+        "func": "msg.payload = Number(msg.payload);\nmsg.payload = (msg.payload)/10;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 275,
+        "y": 1410,
+        "wires": [
+            [
+                "a9987f32.490ea"
+            ]
+        ]
+    },
+    {
+        "id": "5ea2a745.038028",
+        "type": "server-state-changed",
+        "z": "f517e4e9.929c18",
+        "name": "Kitchen Artist",
+        "server": "43c6abca.ce6fb4",
+        "entityidfilter": "sensor.kitchen_artist",
+        "entityidfiltertype": "exact",
+        "haltifstate": "",
+        "x": 100,
+        "y": 1590,
+        "wires": [
+            [
+                "15fb6a53.144d16"
+            ]
+        ]
+    },
+    {
+        "id": "5d815d26.304124",
+        "type": "server-state-changed",
+        "z": "f517e4e9.929c18",
+        "name": "Living Artist",
+        "server": "43c6abca.ce6fb4",
+        "entityidfilter": "sensor.living_artist",
+        "entityidfiltertype": "exact",
+        "haltifstate": "",
+        "x": 100,
+        "y": 1620,
+        "wires": [
+            [
+                "15fb6a53.144d16"
+            ]
+        ]
+    },
+    {
+        "id": "15fb6a53.144d16",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "Artist",
+        "func": "if (msg.payload === \"\") return null;\n\nmsg.payload =\n{\n    \"data\": {\n        \"entity_id\": \"input_text.artist_playing\",\n        \"value\":msg.payload,\n        }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 275,
+        "y": 1590,
+        "wires": [
+            [
+                "116831b6.69781e",
+                "592d6b43.f15874"
+            ]
+        ]
+    },
+    {
+        "id": "116831b6.69781e",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Set input_text",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "input_text",
+        "service": "set_value",
+        "data": "{}",
+        "mergecontext": "",
+        "x": 530,
+        "y": 1590,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "39c36782.d7a228",
+        "type": "server-state-changed",
+        "z": "f517e4e9.929c18",
+        "name": "Bedroom Artist",
+        "server": "43c6abca.ce6fb4",
+        "entityidfilter": "sensor.bedroom_artist",
+        "entityidfiltertype": "exact",
+        "haltifstate": "",
+        "x": 110,
+        "y": 1650,
+        "wires": [
+            [
+                "15fb6a53.144d16"
+            ]
+        ]
+    },
+    {
+        "id": "7879b35.f648c4c",
+        "type": "server-state-changed",
+        "z": "f517e4e9.929c18",
+        "name": "Kitchen Song",
+        "server": "43c6abca.ce6fb4",
+        "entityidfilter": "sensor.kitchen_title",
+        "entityidfiltertype": "exact",
+        "haltifstate": "",
+        "x": 100,
+        "y": 1740,
+        "wires": [
+            [
+                "3037de07.e25892"
+            ]
+        ]
+    },
+    {
+        "id": "35e37cc9.f43d14",
+        "type": "server-state-changed",
+        "z": "f517e4e9.929c18",
+        "name": "Living Song",
+        "server": "43c6abca.ce6fb4",
+        "entityidfilter": "sensor.living_title",
+        "entityidfiltertype": "exact",
+        "haltifstate": "",
+        "x": 100,
+        "y": 1770,
+        "wires": [
+            [
+                "3037de07.e25892"
+            ]
+        ]
+    },
+    {
+        "id": "3037de07.e25892",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "Song",
+        "func": "if (msg.payload === \"\") return null;\n\nmsg.payload =\n{\n    \"data\": {\n        \"entity_id\": \"input_text.song_playing\",\n        \"value\":msg.payload,\n        }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 275,
+        "y": 1740,
+        "wires": [
+            [
+                "631bc24.604633c",
+                "801fb8f8.ec8718"
+            ]
+        ]
+    },
+    {
+        "id": "631bc24.604633c",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Set input_text",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "input_text",
+        "service": "set_value",
+        "data": "{}",
+        "mergecontext": "",
+        "x": 530,
+        "y": 1740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "544844f8.97648c",
+        "type": "server-state-changed",
+        "z": "f517e4e9.929c18",
+        "name": "Bedroom Song",
+        "server": "43c6abca.ce6fb4",
+        "entityidfilter": "sensor.bedroom_title",
+        "entityidfiltertype": "exact",
+        "haltifstate": "",
+        "x": 110,
+        "y": 1800,
+        "wires": [
+            [
+                "3037de07.e25892"
+            ]
+        ]
+    },
+    {
+        "id": "10d255f.cfbddaa",
+        "type": "server-state-changed",
+        "z": "f517e4e9.929c18",
+        "name": "Downstairs Artist",
+        "server": "43c6abca.ce6fb4",
+        "entityidfilter": "sensor.downstairs_artist",
+        "entityidfiltertype": "exact",
+        "haltifstate": "",
+        "x": 110,
+        "y": 1680,
+        "wires": [
+            [
+                "15fb6a53.144d16"
+            ]
+        ]
+    },
+    {
+        "id": "d924f3a2.11e9d",
+        "type": "server-state-changed",
+        "z": "f517e4e9.929c18",
+        "name": "Downstairs Song",
+        "server": "43c6abca.ce6fb4",
+        "entityidfilter": "sensor.downstairs_title",
+        "entityidfiltertype": "exact",
+        "haltifstate": "",
+        "x": 110,
+        "y": 1830,
+        "wires": [
+            [
+                "3037de07.e25892"
+            ]
+        ]
+    },
+    {
+        "id": "bc3a64d3.cfe348",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Group Next",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "media_next_track",
+        "data": "{ \"entity_id\": \"media_player.downstairs\" }",
+        "mergecontext": "",
+        "x": 520,
+        "y": 1200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "653f6d03.520e14",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Group Previous",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "media_previous_track",
+        "data": "{ \"entity_id\": \"media_player.downstairs\" }",
+        "mergecontext": "",
+        "x": 530,
+        "y": 1350,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3bec1532.48030a",
+        "type": "api-call-service",
+        "z": "f517e4e9.929c18",
+        "name": "Group Stop",
+        "server": "43c6abca.ce6fb4",
+        "service_domain": "media_player",
+        "service": "media_pause",
+        "data": "{ \"entity_id\": \"media_player.downstairs\" }",
+        "mergecontext": "",
+        "x": 520,
+        "y": 1050,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "24166a5e.1ac986",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "Group",
+        "func": "msg.payload = \n{ \n    \"data\": {   \n        \"entity_id\": \"media_player.downstairs\", \"volume_level\":flow.get(\"volume\")\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 500,
+        "y": 1545,
+        "wires": [
+            [
+                "a9b829c8.3a0238"
+            ]
+        ]
+    },
+    {
+        "id": "367d1a9b.875dc6",
+        "type": "switch",
+        "z": "f517e4e9.929c18",
+        "name": "Device?",
+        "property": "device",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Kitchen",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Living Room",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Bedroom",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "All",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 285,
+        "y": 285,
+        "wires": [
+            [
+                "4a8a0d9e.fd0194",
+                "f8636af1.17c7b8",
+                "4671f05c.80aa7"
+            ],
+            [
+                "e6892aad.249a48",
+                "f8636af1.17c7b8",
+                "e14d8826.11fec8"
+            ],
+            [
+                "e6892aad.249a48",
+                "4a8a0d9e.fd0194",
+                "ee7187d5.39dd78"
+            ],
+            [
+                "e6892aad.249a48",
+                "4a8a0d9e.fd0194",
+                "f8636af1.17c7b8",
+                "ab051d16.81278"
+            ]
+        ]
+    },
+    {
+        "id": "b6d625.b96b39d8",
+        "type": "switch",
+        "z": "f517e4e9.929c18",
+        "name": "Device?",
+        "property": "device",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Kitchen",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Living Room",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Bedroom",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "All",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 285,
+        "y": 525,
+        "wires": [
+            [
+                "7b09bba2.794e04",
+                "37dc7eaa.256212",
+                "1d4e8edc.418f31"
+            ],
+            [
+                "d45fd70c.875d28",
+                "7b09bba2.794e04",
+                "72a4eb01.1822b4"
+            ],
+            [
+                "d45fd70c.875d28",
+                "1d4e8edc.418f31",
+                "90838f47.c3019"
+            ],
+            [
+                "d45fd70c.875d28",
+                "1d4e8edc.418f31",
+                "7b09bba2.794e04",
+                "f4e3dc8d.3340e"
+            ]
+        ]
+    },
+    {
+        "id": "576466ea.ff7968",
+        "type": "switch",
+        "z": "f517e4e9.929c18",
+        "name": "Device?",
+        "property": "device",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Kitchen",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Living Room",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Bedroom",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "All",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 285,
+        "y": 765,
+        "wires": [
+            [
+                "563995ce.02acec",
+                "2a9d6b3e.f9ded4",
+                "7f8fdbb.4ea6924"
+            ],
+            [
+                "feb11939.56be48",
+                "2a9d6b3e.f9ded4",
+                "46f8f470.5e180c"
+            ],
+            [
+                "feb11939.56be48",
+                "563995ce.02acec",
+                "18ef788.f404888"
+            ],
+            [
+                "feb11939.56be48",
+                "563995ce.02acec",
+                "2a9d6b3e.f9ded4",
+                "fca973a2.b7456"
+            ]
+        ]
+    },
+    {
+        "id": "44b2d3ed.d4d97c",
+        "type": "switch",
+        "z": "f517e4e9.929c18",
+        "name": "Device?",
+        "property": "device",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Kitchen",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Living Room",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Bedroom",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "All",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 285,
+        "y": 1005,
+        "wires": [
+            [
+                "841d2f2a.703df"
+            ],
+            [
+                "143f253b.79a9db"
+            ],
+            [
+                "1e09e4a6.528e4b"
+            ],
+            [
+                "3bec1532.48030a"
+            ]
+        ]
+    },
+    {
+        "id": "b5510194.932ff",
+        "type": "switch",
+        "z": "f517e4e9.929c18",
+        "name": "Device?",
+        "property": "device",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Kitchen",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Living Room",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Bedroom",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "All",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 285,
+        "y": 1155,
+        "wires": [
+            [
+                "425653d8.b3dedc"
+            ],
+            [
+                "dd7c88.3f280378"
+            ],
+            [
+                "526bc582.bb81ac"
+            ],
+            [
+                "bc3a64d3.cfe348"
+            ]
+        ]
+    },
+    {
+        "id": "a693f06e.d7bb9",
+        "type": "switch",
+        "z": "f517e4e9.929c18",
+        "name": "Device?",
+        "property": "device",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Kitchen",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Living Room",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Bedroom",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "All",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 285,
+        "y": 1305,
+        "wires": [
+            [
+                "4d09df3c.4fee9"
+            ],
+            [
+                "c309f1c1.d070a"
+            ],
+            [
+                "6315518f.1ead9"
+            ],
+            [
+                "653f6d03.520e14"
+            ]
+        ]
+    },
+    {
+        "id": "a24cdb22.fa2d08",
+        "type": "switch",
+        "z": "f517e4e9.929c18",
+        "name": "Device?",
+        "property": "device",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Kitchen",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Living Room",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Bedroom",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "All",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 285,
+        "y": 1470,
+        "wires": [
+            [
+                "836d3b05.b4c5e8"
+            ],
+            [
+                "a31cac85.27f6f"
+            ],
+            [
+                "6e83badf.b6f9b4"
+            ],
+            [
+                "24166a5e.1ac986"
+            ]
+        ]
+    },
+    {
+        "id": "801fb8f8.ec8718",
+        "type": "delay",
+        "z": "f517e4e9.929c18",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "hours",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 330,
+        "y": 1800,
+        "wires": [
+            [
+                "73b166d4.e719b8"
+            ]
+        ]
+    },
+    {
+        "id": "73b166d4.e719b8",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "reset",
+        "func": "if (msg.payload === \"\") return null;\n\nmsg.payload =\n{\n    \"data\": {\n        \"entity_id\": \"input_text.song_playing\",\n        \"value\": \"\",\n        }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 500,
+        "y": 1800,
+        "wires": [
+            [
+                "631bc24.604633c"
+            ]
+        ]
+    },
+    {
+        "id": "592d6b43.f15874",
+        "type": "delay",
+        "z": "f517e4e9.929c18",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "hours",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 330,
+        "y": 1650,
+        "wires": [
+            [
+                "825e5d40.adf62"
+            ]
+        ]
+    },
+    {
+        "id": "825e5d40.adf62",
+        "type": "function",
+        "z": "f517e4e9.929c18",
+        "name": "reset",
+        "func": "if (msg.payload === \"\") return null;\n\nmsg.payload =\n{\n    \"data\": {\n        \"entity_id\": \"input_text.artist_playing\",\n        \"value\": \"\",\n        }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 500,
+        "y": 1650,
+        "wires": [
+            [
+                "116831b6.69781e"
+            ]
+        ]
+    },
+    {
+        "id": "18684a15.44e206",
+        "type": "delay",
+        "z": "f517e4e9.929c18",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 135,
+        "y": 1470,
+        "wires": [
+            [
+                "a24cdb22.fa2d08"
+            ]
+        ]
+    },
+    {
+        "id": "43c6abca.ce6fb4",
+        "type": "server",
+        "z": "",
+        "name": "Home Assistant",
+        "url": "http://YOURIPADDRESS:8123",
+        "pass": "YOURSUPERSECRETPASSWORD"
+    }
+]
