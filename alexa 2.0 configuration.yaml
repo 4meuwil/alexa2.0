@@ -1,3 +1,10 @@
+homeassistant:
+  customize_glob:
+    "sensor.media*":
+    hidden: true
+
+
+
 media_player:
   - platform: alexa
     email: !secret alexa_email
@@ -55,29 +62,37 @@ input_select:
 input_boolean:
   stop_music:
     name: Stop Music
+    icon: mdi:stop
     initial: off
   next_song:
     name: Next Song
+    icon: mdi:skip-next
     initial: off
   previous_song:
     name: Previous Song
+    icon: mdi:skip-previous
     initial: off
     
-input_text:
+input_text:    
   announce:
     name: Announce
+    icon: mdi:message-alert-outline
     initial: ""      
   artist_song:
-    name: Artist or Song
+    name: Artist/Song
+    icon: mdi:music-circle-outline
     initial: ""
   artist_radio:
-    name: Artist Radio
+    name: Station
+    icon: mdi:radio
     initial: ""
   artist_playing:
-    name: Artist
+    name: Artist Playing
+    icon: mdi:speaker-wireless
     initial: ""
   song_playing:
-    name: Song
+    name: Song Playing
+    icon: mdi:speaker-wireless
     initial: ""
   
 input_number:
@@ -88,30 +103,46 @@ input_number:
     max: 10
     step: 0.5
     mode: slider
+    
+group:
+ alexa:
+    name: Alexa Media
+    control: hidden
+    entities:
+     - input_select.which_device
+     - input_number.echo_volume
+     - input_text.announce
+     - input_select.genre
+     - input_text.artist_song
+     - input_text.artist_radio
+     - input_boolean.stop_music
+     - input_boolean.next_song
+     - input_boolean.previous_song
+     - input_text.artist_playing
+     - input_text.song_playing
 
 sensor:
-   kitchen_artist:
+   media_kitchen_artist:
     friendly_name: 'kitchen artist'
     value_template: '{{ states.media_player.kitchen_echo.attributes.media_artist }}'      
-   kitchen_title:
+   media_kitchen_title:
     friendly_name: 'kitchen title'
     value_template: '{{ states.media_player.kitchen_echo.attributes.media_title }}'   
-   living_artist:
+   media_living_artist:
     friendly_name: 'living artist'
     value_template: '{{ states.media_player.living_room.attributes.media_artist }}'      
-   living_title: 
+   media_living_title: 
     friendly_name: 'living title'
     value_template: '{{ states.media_player.living_room.attributes.media_title }}'
-   bedroom_artist:
+   media_bedroom_artist:
     friendly_name: 'bedroom artist'
     value_template: '{{ states.media_player.bedroom_echo.attributes.media_artist }}'      
-   bedroom_title: 
+   media_bedroom_title: 
     friendly_name: 'bedroom title'
     value_template: '{{ states.media_player.bedroom_echo.attributes.media_title }}'
-   downstairs_artist:
+   media_downstairs_artist:
     friendly_name: 'downstairs artist'
     value_template: '{{ states.media_player.downstairs.attributes.media_artist }}'      
-   downstairs_title: 
+   media_downstairs_title: 
     friendly_name: 'downstairs title'
     value_template: '{{ states.media_player.downstairs.attributes.media_title }}'
-    
