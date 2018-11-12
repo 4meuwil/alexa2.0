@@ -11,12 +11,36 @@ input_select:
     name: Genre
     options:
      - Choose...
+     - Easy Pop
+     - Top Pop
      - Top Pop (Clean)
-     - Classic Rock
+     - Top Country
+     - Top Country (Clean)
+     - Classic Country
+     - 80s Rock
      - Top Rock
-     - Best of Prime Music
+     - Hard Rock
+     - Classic Rock
+     - Top Alternative
+     - 90s Alternative & Grunge
+     - Top Dance
+     - Chill Electronic
+     - Top Christian
+     - Praise & Worship
+     - Top Hip Hop
+     - Top Hip Hop (Clean)
      - Cool Jazz
+     - All Blues
      - Oldies
+     - All 50s
+     - All 60s
+     - All 70s
+     - All 80s
+     - All 90s
+     - All 2000s
+     - All 2010s
+     - Toddler Time
+     - Stand-up Comedy
     initial: Choose...
   which_device:
     name: Which Device?
