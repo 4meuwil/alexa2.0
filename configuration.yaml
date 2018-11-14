@@ -12,3 +12,4 @@ homeassistant:
   customize_glob: !include customize_glob.yaml
   packages:
     alexa: !include alexa.yaml
+    climate: !include climate.yaml
