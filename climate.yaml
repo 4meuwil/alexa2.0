@@ -50,7 +50,7 @@ input_boolean:
     initial: off
     
 sensor:
-## Downstairs Climate Sensors        
+## Downstairs Climate Sensors Minus 1 Degree Adjustment        
   - platform: mqtt
     state_topic: 'tele/downstairs_climate/SENSOR'
     name: 'Downstairs Temp' #AM2302
@@ -70,7 +70,7 @@ sensor:
       downstairs_humidity_rounded:
         value_template: "{{ states('sensor.downstairs_humidity') | round(0) }}"
         
-## Garage Climate Sensors        
+## Garage Climate Sensors Minus 1 Degree Adjustment        
   - platform: mqtt
     state_topic: 'tele/garage_light2/SENSOR'
     name: 'Garage Temp' #AM2302
@@ -90,7 +90,7 @@ sensor:
       garage_humidity_rounded:
         value_template: "{{ states('sensor.garage_humidity') | round(0) }}"
         
-## Upstairs Climate Sensors
+## Upstairs Climate Sensors Minus 1 Degree Adjustment
   - platform: mqtt
     state_topic: 'tele/upstairs_climate/SENSOR'
     name: 'Upstairs Temp' #AM2302
