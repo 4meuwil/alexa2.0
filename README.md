@@ -23,7 +23,7 @@ For multiple speakers, go into your Alexa app and create a speaker group. It sho
 
 For the genres, edit input_select.genre as you wish. I would suggest seeing how they are named in Prime Music i.e. "rock" played rap songs for me.
 
-
+You can very quickly use this as a package or break out all the components to suite your needs....hope you like it!
 
 
 
