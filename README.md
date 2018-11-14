@@ -1,3 +1,5 @@
+** updated using packages and added alexa temp/humidy sensor announements (set up routine to activate boolean)
+
 # Alexa 2.0
 
 This is what I call "alexa 2.0" and it works well for me. I have amazon prime music and use it almost solely. "media_content_id" could be adjusted for other services such as spotify, pandora, tunein etc.
