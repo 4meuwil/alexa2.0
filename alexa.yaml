@@ -17,8 +17,8 @@ group:
      - input_boolean.stop_music
      - input_boolean.next_song
      - input_boolean.previous_song
-     - input_text.artist_playing
-     - input_text.song_playing
+     - sensor.artist_playing
+     - sensor.song_playing
 
 input_boolean:
   stop_music:
@@ -101,14 +101,7 @@ input_text:
     name: Station
     icon: mdi:radio
     initial: ""
-  artist_playing:
-    name: Artist Playing
-    icon: mdi:speaker-wireless
-    initial: ""
-  song_playing:
-    name: Song Playing
-    icon: mdi:speaker-wireless
-    initial: ""
+
   
 media_player:
   - platform: alexa
@@ -144,3 +137,12 @@ sensor:
      media_downstairs_title: 
       friendly_name: 'downstairs title'
       value_template: '{{ states.media_player.downstairs.attributes.media_title }}'
+  - platform: mqtt
+    name: Artist Playing
+    icon: mdi:speaker-wireless
+    state_topic: "alexa/artistplaying"
+  - platform: mqtt
+    name: Song Playing
+    icon: mdi:speaker-wireless
+    state_topic: "alexa/songplaying"
+    
