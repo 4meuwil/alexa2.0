@@ -33,9 +33,9 @@ views:
             name: Previous Song
             icon: mdi:skip-backward
             tap_action: toggle                    
-          - entity: input_text.artist_playing
+          - entity: sensor.artist_playing
             name: Artist Playing
             icon: mdi:play     
-          - entity: input_text.song_playing
+          - entity: sensor.song_playing
             name: Song Playing
             icon: mdi:play        
