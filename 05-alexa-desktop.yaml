@@ -1,0 +1,816 @@
+title: Alexa
+icon: mdi:music-box
+path: alexa2
+cards:
+  - type: custom:compact-custom-header
+
+  - type: vertical-stack
+    cards:  
+      - type: horizontal-stack
+        cards:
+                      
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/show.png
+              entity: input_text.artist_song
+              tap_action:
+                  action: call-service
+                  service: input_select.select_option
+                  service_data:
+                    entity_id: input_select.which_device
+                    option: "Echo Show"
+            style:
+              border-radius: 10px
+              border: '[[ if(input_select.which_device == "Echo Show", "solid 2px rgb(26, 186, 146)", "solid 2px rgb(48, 48, 48)") ]]'             
+
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/kitchen.png
+              entity: input_text.artist_song
+              tap_action:
+                  action: call-service
+                  service: input_select.select_option
+                  service_data:
+                    entity_id: input_select.which_device
+                    option: "Kitchen"
+            style:
+              border-radius: 10px
+              border: '[[ if(input_select.which_device == "Kitchen", "solid 2px rgb(26, 186, 146)", "solid 2px rgb(48, 48, 48)") ]]'
+                
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/living.png
+              entity: input_text.artist_song
+              tap_action:
+                  action: call-service
+                  service: input_select.select_option
+                  service_data:
+                    entity_id: input_select.which_device
+                    option: "Living Room"
+            style:
+              border-radius: 10px
+              border: '[[ if(input_select.which_device == "Living Room", "solid 2px rgb(26, 186, 146)", "solid 2px rgb(48, 48, 48)") ]]'
+              
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/master.png
+              entity: input_text.artist_song
+              tap_action:
+                  action: call-service
+                  service: input_select.select_option
+                  service_data:
+                    entity_id: input_select.which_device
+                    option: "Bedroom"
+            style:
+              border-radius: 10px
+              border: '[[ if(input_select.which_device == "Bedroom", "solid 2px rgb(26, 186, 146)", "solid 2px rgb(48, 48, 48)") ]]'
+              
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/abigail.png
+              entity: input_text.artist_song
+              tap_action:
+                  action: call-service
+                  service: input_select.select_option
+                  service_data:
+                    entity_id: input_select.which_device
+                    option: "Abigail"
+            style:
+              border-radius: 10px
+              border: '[[ if(input_select.which_device == "Abigail", "solid 2px rgb(26, 186, 146)", "solid 2px rgb(48, 48, 48)") ]]'
+              
+### Announce - Artist - Song - Station Requests
+
+           
+      - type: custom:card-modder
+        card:
+          type: picture-entity
+          show_name: false
+          show_state: false
+          image: /local/music/announce4.png
+          entity: input_text.announce
+        style:
+          border-radius: 10px
+
+              
+      - type: horizontal-stack
+        cards:
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/artist-song.png
+              entity: input_text.artist_song
+            style:
+              border-radius: 10px
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/station.png
+              entity: input_text.genre
+            style:
+              border-radius: 10px
+
+
+           
+## Music Genres
+
+## Row 1          
+      - type: horizontal-stack
+        cards:
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/50s.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "All 50s"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px        
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/60s.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "All 60s"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/70s.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "All 70s"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/80s.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "All 80's"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/90s.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "All 90s"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px 
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/00s.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "All 2000s"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px 
+              
+## Row 2          
+      - type: horizontal-stack
+        cards:      
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/10s.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "All 2010s"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/Pop.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "Top Pop (Clean)"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/Country.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "Top Country (Clean)"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/Country-classic.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "Classic Country"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px 
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/Rock.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "Top Rock"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/Hard-rock.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "Hard Rock"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px
+             
+##     Row 3
+      - type: horizontal-stack
+        cards:     
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/Classic-rock.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "Classic Rock"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/Alternative.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "Top Alternative"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px   
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/Grunge.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "90s Alternative & Grunge"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/Dance.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "Top Dance"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/Chill.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "Chill Electronic"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/Techno.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "Techno"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px
+              
+##     Row 4
+      - type: horizontal-stack
+        cards:     
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/Dubstep.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "Dubstep"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px   
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/House.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "House"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/Blues.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "All Blues"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/Jazz.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "Cool Jazz"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/Motown.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "Classic R&B"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/Hip Hop.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "Top Hip Hop"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px   
+              
+##     Row 5
+      - type: horizontal-stack
+        cards:     
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/R&B.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "R&B"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px   
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/Oldies.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "Oldies"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/Religious.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "Top Christian"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/Worship.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "Praise & Worship"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/Childrens.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "Toddler Time"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px   
+          - type: custom:card-modder
+            card:
+              type: picture-entity
+              show_name: false
+              show_state: false
+              image: /local/music/genre/Comedy.png
+              entity: input_text.genre
+              hold_action: none
+              tap_action:
+                action: call-service
+                service: input_text.set_value
+                service_data:
+                  entity_id: input_text.genre
+                  value: "Stand-up Comedy"
+            style:
+              background-color: var(--primary-background-color) 
+              border-radius: 10px 
+              height: 75px
+              width: 75px
+  
+## Show Players Based on Device Selection          
+  - type: custom:state-switch
+    entity: input_select.which_device
+    states:
+
+      Kitchen:
+          type: custom:card-modder
+          style:
+            border-radius: 8px
+          card:          
+            type: custom:mini-media-player
+            entity: media_player.kitchen_echo
+            artwork: full-cover-fit
+            hide:
+              source: true
+              icon: true
+            info: scroll
+            tts:
+              platform: alexa      
+      Echo Show:
+          type: custom:card-modder
+          style:
+            border-radius: 8px
+          card:          
+            type: custom:mini-media-player
+            entity: media_player.levi_s_echo_show
+            artwork: full-cover-fit
+            more-info: true
+            hide:
+              source: true
+              icon: true
+            info: scroll
+            tts:
+              platform: alexa       
+      Living Room:
+          type: custom:card-modder
+          style:
+            border-radius: 8px
+          card:          
+            type: custom:mini-media-player
+            entity: media_player.living_room_echo
+            artwork: full-cover-fit
+            hide:
+              source: true
+              icon: true
+            info: scroll
+            tts:
+              platform: alexa
+      Bedroom:
+          type: custom:card-modder
+          style:
+            border-radius: 8px
+          card:          
+            type: custom:mini-media-player
+            entity: media_player.bedroom_echo
+            artwork: full-cover-fit
+            hide:
+              source: true
+              icon: true
+            info: scroll
+            tts:
+              platform: alexa              
+      Abigail:
+          type: custom:card-modder
+          style:
+            border-radius: 8px
+          card:          
+            type: custom:mini-media-player
+            entity: media_player.abigail_echo
+            artwork: full-cover-fit
+            hide:
+              source: true
+              icon: true
+            info: scroll
+            tts:
+              platform: alexa              
+
+      Stereo:
+          type: custom:card-modder
+          style:
+            border-radius: 8px
+          card:          
+            type: custom:mini-media-player
+            entity: media_player.
+            artwork: full-cover-fit
+            hide:
+              source: true
+              icon: true
+            info: scroll
+            tts:
+              platform: alexa
