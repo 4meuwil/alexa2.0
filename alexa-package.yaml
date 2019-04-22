@@ -65,36 +65,6 @@ notify:
   - platform: alexa_media
     name: alexa_media
 
-automation:
-  - id: check_refrigerator
-    alias: "Check Refrigerator"
-    initial_state: 'on'
-    trigger:
-      - platform: state
-        entity_id:
-          - sensor.refrigerator
-        to: "Refrigerator"
-        for:
-          minutes: 10
-      - platform: state
-        entity_id:
-          - sensor.refrigerator
-        to: "Freezer"
-        for:
-          minutes: 10
-    action:
-      - service: notify.alexa_media
-        data:
-          message: "Oh Snap. Someone check the refrigerator please"
-          title: "Oh Snap!!! Someone Check the Fridge!"
-          data:
-            type: "announce"
-            method: "all"
-          target: ["group.echos"]
-      - service: notify.notify
-        data:
-          message: "Oh Snap!!! Someone Check the Fridge!"
-
 
 
 
