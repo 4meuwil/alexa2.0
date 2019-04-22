@@ -1,0 +1,106 @@
+group:
+  echos:
+    name: All Echos
+    entities:
+     - media_player.levi_s_echo_show
+     - media_player.kitchen_echo
+     - media_player.living_room_echo
+     - media_player.bedroom_echo
+     - media_player.abigail_echo
+
+input_boolean:
+  stop_music:
+    name: Stop Music
+    icon: mdi:stop
+    initial: off
+  next_song:
+    name: Next Song
+    icon: mdi:skip-next
+    initial: off
+  previous_song:
+    name: Previous Song
+    icon: mdi:skip-previous
+    initial: off
+
+input_select:
+  which_device:
+    name: Which Device?
+    options:
+     - Choose...
+     - Kitchen
+     - Living Room
+     - Bedroom
+     - Echo Show
+     - Abigail
+     - Stereo
+     - All
+    initial: Echo Show
+
+
+input_text:
+  announce:
+    name: Announce
+    icon: mdi:message-alert-outline
+    initial: ""
+  artist_song:
+    name: Artist/Song
+    icon: mdi:music-circle-outline
+    initial: ""
+  artist_radio:
+    name: Radio
+    icon: mdi:radio
+    initial: ""
+  genre:
+    name: Station
+    icon: mdi:radio
+    initial: ""
+
+alexa_media:
+  accounts:
+    - email: !secret alexa_email
+      password: !secret alexa_password
+      url: amazon.com
+
+notify:
+  - platform: alexa_media
+    name: alexa_media
+
+automation:
+  - id: check_refrigerator
+    alias: "Check Refrigerator"
+    initial_state: 'on'
+    trigger:
+      - platform: state
+        entity_id:
+          - sensor.refrigerator
+        to: "Refrigerator"
+        for:
+          minutes: 10
+      - platform: state
+        entity_id:
+          - sensor.refrigerator
+        to: "Freezer"
+        for:
+          minutes: 10
+    action:
+      - service: notify.alexa_media
+        data:
+          message: "Oh Snap. Someone check the refrigerator please"
+          title: "Oh Snap!!! Someone Check the Fridge!"
+          data:
+            type: "announce"
+            method: "all"
+          target: ["group.echos"]
+      - service: notify.notify
+        data:
+          message: "Oh Snap!!! Someone Check the Fridge!"
+
+
+
+
+
+
+
+
+
+
